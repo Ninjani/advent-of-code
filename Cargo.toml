@@ -1,0 +1,35 @@
+[package]
+name = "aoc"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+aoc2018 = { path = "./aoc2018" }
+aoc2019 = { path = "./aoc2019" }
+aoc2020 = { path = "./aoc2020" }
+aoc2021 = { path = "./aoc2021" }
+aoc2022 = { path = "./aoc2022" }
+utility = { path = "./utility" }
+color-eyre = "0.6.2"
+
+[dev-dependencies]
+criterion = "0.4.0"
+
+[profile.release]
+opt-level = 'z'     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = 'abort'     # Abort on panic
+
+[workspace]
+members = [
+    "aoc2018",
+    "aoc2019",
+    "aoc2020",
+    "aoc2021",
+    "aoc2022",
+]
+
+[[bench]]
+name = "bench"
+harness = false
